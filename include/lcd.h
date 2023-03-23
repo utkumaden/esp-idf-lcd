@@ -221,12 +221,11 @@ int lcdWrite(lcdDriver_t *driver, uint8_t data);
  */
 #define LCD_DECODE_CURSOR(driver)\
     ((driver)->cursor.x +                                                   /* Base position */\
-        ((driver)->dimensions.height > 2) *                                 /* If the display has more than 2 lines. */\
-                ( \
-                    64 * ((driver)->cursor.y % 2) +                         /* Add 64 if the row is even */\
-                    (driver)->dimensions.width * ((driver)->cursor.y >= 2)  /* Add width if the row is the last two. */\
-                ) \
-        )
+        ( \
+            64 * ((driver)->cursor.y % 2) +                         /* Add 64 if the row is even */\
+            (driver)->dimensions.width * ((driver)->cursor.y >= 2)  /* Add width if the row is the last two. */\
+        ) \
+    )
 // #include <stdio.h>
 // inline static uint8_t _LCD_DECODE_CURSOR(lcdDriver_t* driver) {
 //     uint8_t value = LCD_DECODE_CURSOR(driver);
